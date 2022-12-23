@@ -3,7 +3,7 @@
 
 {{if data.screen == 1}}
 	{{if data.sensors}}
-		{{for data.sensors}}			
+		{{for data.sensors}}
 			<b>{{:value.long_name}}</b><br>
 			{{if value.pressure}}
 				<B>Pressure:</B> {{:value.pressure}} kPa<br>
@@ -20,7 +20,7 @@
 				{{/for}}
 			{{/if}}
 		{{empty}}
-			<span class='brute'>{{:value.long_name}} cannot be found!</span><br>
+			[SPAN_BRUTE("{{:value.long_name}} cannot be found!")]<br>
 		{{/for}}
 	{{else}}
 		There are no connected sensors.
@@ -37,44 +37,44 @@
 			{{if data.input_present}}
 				<tr><td><b>Input:</b></td><td>
 				{{if data.in_power}}
-					<span class='toxin'>Injecting</span>
+					[SPAN_TOXIN("Injecting")]
 				{{else}}
-					<span class='brute'>On Hold</span>
+					[SPAN_BRUTE("On Hold")]
 				{{/if}}
 				</td><td></td></tr>
 				<tr><td><b>Flow Rate Limit:</b></td><td>{{:data.atmos_volume}} L/s</td></tr>
-				<tr><td><b>Flow Rate:</b></td><td>{{:data.input_flow_setting}} L/s</td></tr>				
+				<tr><td><b>Flow Rate:</b></td><td>{{:data.input_flow_setting}} L/s</td></tr>
 				<tr><td><b>Command:</b></td><td>{{:helper.link('Toggle Power', 'power', {'in_toggle_injector' : 1})}}{{:helper.link('Set Flow Rate', null, {'in_set_flowrate' : 1})}}{{:helper.link('Max Flow', null, {'in_set_max' : 1})}}{{:helper.link('Refresh', null, {'in_refresh_status' : 1})}}</td></tr>
 			{{else}}
-				<tr><td><span class='brute'>ERROR: Cannot find input port</span></td></tr>
+				<tr><td>[SPAN_BRUTE("ERROR: Cannot find input port")]</td></tr>
 				<tr><td><b>Command:</b></td><td>{{:helper.link('Toggle Power', 'power', {'in_toggle_injector' : 1},'disabled')}}{{:helper.link('Set Flow Rate', null, {'in_set_flowrate' : 1}, 'disabled')}}{{:helper.link('Max Flow', null, {'in_set_max' : 1}, 'disabled')}}{{:helper.link('Refresh', null, {'in_refresh_status' : 1})}}</td></tr>
 			{{/if}}
 		{{if data.out_pressure_mode}}
 			{{if data.output_present}}
 				<tr><td><b>Output:</b></td><td>
 					{{if data.out_power}}
-						<span class='toxin'>Open</span>
+						[SPAN_TOXIN("Open")]
 					{{else}}
-						<span class='brute'>On Hold</span>
-					{{/if}}					
+						[SPAN_BRUTE("On Hold")]
+					{{/if}}
 				<tr><td><b>Minimum Chamber Pressure:</b></td><td>{{:data.external_pressure}} kPa</td></tr>
 				<tr><td><b>Command:</b></td><td>{{:helper.link('Toggle Power', 'power', {'out_toggle_power' : 1})}}{{:helper.link('Set Pressure', null, {'s_out_set_pressure' : 1})}}{{:helper.link('Default Pressure', null, {'s_set_default' : 1})}}{{:helper.link('Refresh', null, {'out_refresh_status' : 1})}}</td></tr>
 			{{/if}}
 		{{else data.output_present}}
 				<tr><td><b>Output:</b></td><td>
 				{{if data.out_power}}
-					<span class='toxin'>Open</span>
+					[SPAN_TOXIN("Open")]
 				{{else}}
-					<span class='brute'>On Hold</span>
-				{{/if}}				
+					[SPAN_BRUTE("On Hold")]
+				{{/if}}
 			<tr><td><b>Max Output Pressure:</b></td><td>{{:data.max_pump_pressure}} kPa</td></tr>
 			<tr><td><b>Output Pressure:</b></td><td>{{:data.out_pressure_setting}} kPa</td></tr>
 			<tr><td><b>Command:</b></td><td>{{:helper.link('Toggle Power', 'power', {'out_toggle_power' : 1})}}{{:helper.link('Set Pressure', null, {'out_set_pressure' : 1})}}{{:helper.link('Max Pressure', null, {'out_set_max' : 1})}}{{:helper.link('Refresh', null, {'out_refresh_status' : 1})}}</td></tr>
 		{{else}}
-			<tr><td><span class='brute'>ERROR: Cannot find output port</span></td><td></tr>
+			<tr><td>[SPAN_BRUTE("ERROR: Cannot find output port")]</td><td></tr>
 			<tr><td><b>Command:</b></td><td>{{:helper.link('Toggle Power', 'power', {'out_toggle_power' : 1}, 'disabled')}}{{:helper.link('Set Pressure', null, {'s_out_set_pressure' : 1}, 'disabled')}}{{:helper.link('Default Pressure', null, {'s_set_default' : 1}, 'disabled')}}{{:helper.link('Refresh', null, {'out_refresh_status' : 1})}}</td></tr>
 		{{/if}}
-		</table>		
+		</table>
 	{{/if}}
 {{else data.screen == 2}}
 	<b>Console Settings</b>

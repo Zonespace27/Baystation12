@@ -35,9 +35,9 @@
 		<div class="itemContent">
 			{{if data.locked && !data.siliconUser}}
 				{{if data.isOperating}}
-					<span class='good'>On</span>
+					[SPAN_GOOD("On")]
 				{{else}}
-					<span class='bad'>Off</span>
+					[SPAN_BAD("Off")]
 				{{/if}}
 			{{else}}
 				{{:helper.link('On', 'power', {'breaker' : 1}, data.isOperating ? 'selected' : null)}}{{:helper.link('Off', 'close', {'breaker' : 1}, data.isOperating ? null : 'selected')}}
@@ -51,11 +51,11 @@
 		</div>
 		<div class="itemContent">
 			{{if data.externalPower == 2}}
-				<span class='good'>Good</span>
+				[SPAN_GOOD("Good")]
 			{{else data.externalPower == 1}}
-				<span class='average'>Low</span>
+				[SPAN_AVERAGE("Low")]
 			{{else}}
-				<span class='bad'>None</span>
+				[SPAN_BAD("None")]
 			{{/if}}
 		</div>
 	</div>
@@ -65,15 +65,15 @@
 			Power Cell:
 		</div>
 		{{if data.powerCellStatus == null}}
-			<div class="itemContent bad">		
+			<div class="itemContent bad">
 				Power cell removed.
 			</div>
 		{{else}}
-			
+
 			{{:helper.displayBar(data.powerCellStatus, 0, 100, (data.powerCellStatus >= 50) ? 'good' : (data.powerCellStatus >= 25) ? 'average' : 'bad')}}
-			<div class="itemContent" style="width: 60px">		
+			<div class="itemContent" style="width: 60px">
 				{{:helper.round(data.powerCellStatus*10)/10}}%
-			</div>	
+			</div>
 		{{/if}}
 	</div>
 
@@ -85,20 +85,20 @@
 			<div class="itemContent">
 				{{if data.locked && !data.siliconUser}}
 					{{if data.chargeMode}}
-						<span class='good'>Auto</span>
+						[SPAN_GOOD("Auto")]
 					{{else}}
-						<span class='bad'>Off</span>
-					{{/if}}				
+						[SPAN_BAD("Off")]
+					{{/if}}
 				{{else}}
 					{{:helper.link('Auto', 'refresh', {'cmode' : 1}, data.chargeMode ? 'selected' : null)}}{{:helper.link('Off', 'close', {'cmode' : 1}, data.chargeMode ? null : 'selected')}}
 				{{/if}}
 				&nbsp;
 				{{if data.chargingStatus > 1}}
-					[<span class='good'>Fully Charged</span>]
+					[[SPAN_GOOD("Fully Charged")]]
 				{{else data.chargingStatus == 1}}
-					[<span class='average'>Charging</span>]
+					[[SPAN_AVERAGE("Charging")]]
 				{{else}}
-					[<span class='bad'>Not Charging</span>]
+					[[SPAN_BAD("Not Charging")]]
 				{{/if}}
 			</div>
 		</div>
@@ -118,16 +118,16 @@
 			<div class="itemContent" style="width: 105px">
 				&nbsp;&nbsp;
 				{{if value.status < data.pChan_On}}
-					<span class='bad'>Off</span>
+					[SPAN_BAD("Off")]
 				{{else}}
-					<span class='good'>On</span>
+					[SPAN_GOOD("On")]
 				{{/if}}
 				{{if data.locked}}
 					{{if value.status == data.pChan_Off_A || value.status == data.pChan_On_A}}
 						&nbsp;&nbsp;Auto
 					{{else}}
 						&nbsp;&nbsp;Manual
-					{{/if}}		
+					{{/if}}
 				{{/if}}
 			</div>
 			{{if !data.locked || data.siliconUser}}
@@ -162,9 +162,9 @@
 		<div class="itemContent">
 			{{if data.locked && !data.siliconUser}}
 				{{if data.coverLocked}}
-					<span class='good'>Engaged</span>
+					[SPAN_GOOD("Engaged")]
 				{{else}}
-					<span class='bad'>Disengaged</span>
+					[SPAN_BAD("Disengaged")]
 				{{/if}}
 			{{else}}
 				{{:helper.link('Engaged', 'locked', {'lock' : 1}, data.coverLocked ? 'selected' : null)}}{{:helper.link('Disengaged', 'unlocked', {'lock' : 1}, data.coverLocked ? null : 'selected')}}

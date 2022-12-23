@@ -5,20 +5,20 @@ var/global/floorIsLava = 0
 
 ////////////////////////////////
 /proc/message_admins(var/msg)
-	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
+	msg = SPAN_LOG_MESSAGE("[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[msg]")]")
 	log_adminwarn(msg)
 	for(var/client/C as anything in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C, msg)
 /proc/message_staff(var/msg)
-	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
+	msg = SPAN_LOG_MESSAGE("[SPAN_PREFIX("STAFF LOG:")] [SPAN_MESSAGE("[msg]")]")
 	log_adminwarn(msg)
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.holder && (R_INVESTIGATE & C.holder.rights))
 			to_chat(C, msg)
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	log_attack(text)
-	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
+	var/rendered = SPAN_LOG_MESSAGE("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")]")
 	for(var/client/C as anything in GLOB.admins)
 		if(check_rights(R_INVESTIGATE, 0, C))
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
@@ -684,7 +684,7 @@ var/global/floorIsLava = 0
 		if(!category.can_view(usr))
 			continue
 		if(active_category == category)
-			dat += "<span class='linkOn'>[category.name]</span>"
+			dat += SPAN_LINKON("[category.name]")
 		else
 			dat += "<A href='?src=\ref[src];admin_secrets_panel=\ref[category]'>[category.name]</A> "
 	dat += "<HR>"
@@ -718,7 +718,7 @@ var/global/floorIsLava = 0
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world("<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
+		to_world(SPAN_DANGER("Restarting world!</span> <span class='notice'>Initiated by [usr.key]!"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		sleep(50)
@@ -867,7 +867,7 @@ GLOBAL_VAR_INIT(skip_allow_lists, FALSE)
 		log_and_message_admins("has started the game.")
 		return 1
 	else
-		to_chat(usr, "<span class='bigwarning'>Error: Start Now: Game has already started.</span>")
+		to_chat(usr, SPAN_BIGWARNING("Error: Start Now: Game has already started."))
 		return 0
 
 /datum/admins/proc/endnow()
@@ -956,7 +956,7 @@ GLOBAL_VAR_INIT(skip_allow_lists, FALSE)
 	if(!usr.client.holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	to_world("<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
+	to_world(SPAN_DANGER("Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!"))
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	world.Reboot()
@@ -1407,7 +1407,7 @@ GLOBAL_VAR_INIT(skip_allow_lists, FALSE)
 		return 1
 	if(tomob.client) //No need to ghostize if there is no client
 		tomob.ghostize(0)
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name].</span>")
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name]."))
 	log_admin("[key_name(usr)] stuffed [frommob.ckey] into [tomob.name].")
 	tomob.ckey = frommob.ckey
 	qdel(frommob)
@@ -1578,19 +1578,19 @@ GLOBAL_VAR_INIT(skip_allow_lists, FALSE)
 	var/success = send_fax_loop(P, P.department, P.origin)
 
 	if (success)
-		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
+		to_chat(src.owner, SPAN_NOTICE("Message reply to transmitted successfully."))
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
 			for(var/client/C as anything in GLOB.admins)
 				if((R_INVESTIGATE) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, SPAN_LOG_MESSAGE("[SPAN_PREFIX("FAX LOG:")][key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)"))
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [P.department]")
 			for(var/client/C as anything in GLOB.admins)
 				if((R_INVESTIGATE) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [P.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, SPAN_LOG_MESSAGE("[SPAN_PREFIX("FAX LOG:")][key_name_admin(src.owner)] has sent a fax message to [P.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)"))
 	else
-		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")
+		to_chat(src.owner, SPAN_WARNING("Message reply failed."))
 
 	spawn(100)
 		qdel(P)

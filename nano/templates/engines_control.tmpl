@@ -5,7 +5,7 @@
 <div class="item">
 	<div class='item'>
 		<div class="itemLabel">
-			<span class='average'>Global controls:</span>
+			[SPAN_AVERAGE("Global controls:")]
 		</div>
 		<div class="itemContent">
 			{{:helper.link(data.global_state ? 'Shut all down' : 'Power all up', 'power', {'global_toggle' : 1}, null, data.global_state ? 'selected' : null)}}
@@ -13,7 +13,7 @@
 	</div>
 	<div class='item'>
 		<div class="itemLabel">
-			<span class='average'>Thrust limit:</span>
+			[SPAN_AVERAGE("Thrust limit:")]
 		</div>
 		<div class="itemContent">
 			{{:helper.link('', 'circle-plus', { 'global_limit' : 0.1}, null, null)}}
@@ -23,10 +23,10 @@
 	</div>
 	<div class='item'>
 		<div class="itemLabel">
-			<span class='average'>Total thrust:</span>
+			[SPAN_AVERAGE("Total thrust:")]
 		</div>
 		<div class="itemContent">
-			<span class='white'>{{:data.total_thrust}}</span>
+			[SPAN_WHITE("{{:data.total_thrust}}")]
 		</div>
 	</div>
 </div>
@@ -35,7 +35,7 @@
 		{{for data.engines_info}}
 			<div class='item'>
 				<div class="itemLabel">
-					<span class='white'>Engine #{{:(index + 1)}}:</span>
+					[SPAN_WHITE("Engine #{{:(index + 1)}}:")]
 				</div>
 				<div class="itemContent">
 						{{:helper.link(value.eng_on ? 'Shutdown' : 'Power up', 'power', { 'toggle' : 1, 'engine' : value.eng_reference }, null, value.eng_on ? value.eng_on == 1 ? 'linkOn' : 'yellowButton' : null)}}
@@ -43,32 +43,32 @@
 			<div class='statusDisplay'>
 			  <div class='item'>
 				<div class="itemLabel">
-					<span class='average'>Type:</span>
+					[SPAN_AVERAGE("Type:")]
 				</div>
 				<div class="itemContent">
-					<span class='white'>{{:value.eng_type}}</span>
+					[SPAN_WHITE("{{:value.eng_type}}")]
 				</div>
 			  </div>
 			  <div class='item'>
 				<div class="itemLabel">
-					<span class='average'>Status:</span>
+					[SPAN_AVERAGE("Status:")]
 				</div>
 				<div class="itemContent">
 					<span class='{{:value.eng_on ? value.eng_on == 1 ? 'good' : 'average' : 'bad'}}'>{{:value.eng_on ?  value.eng_on == 1 ? 'Online' : 'Booting' : 'Offline'}}</span><br>
-					<span class='white'>{{:value.eng_status}}</span>
+					[SPAN_WHITE("{{:value.eng_status}}")]
 				</div>
 			  </div>
 			  <div class='item'>
 				<div class="itemLabel">
-					<span class='average'>Current thrust:</span>
+					[SPAN_AVERAGE("Current thrust:")]
 				</div>
 				<div class="itemContent">
-					<span class='white'>{{:value.eng_thrust}}</span>
+					[SPAN_WHITE("{{:value.eng_thrust}}")]
 				</div>
 			  </div>
 			  <div class='item'>
 				<div class="itemLabel">
-					<span class='average'>Thrust limit:</span>
+					[SPAN_AVERAGE("Thrust limit:")]
 				</div>
 				<div class="itemContent">
 					{{:helper.link('', 'circle-plus', { 'limit' : 0.1, 'engine' : value.eng_reference }, null, null)}}
@@ -86,7 +86,7 @@
 			<div class='block'>
 				<div class='item'>
 					<div class="itemLabel">
-						<span class='white'>Engine #{{:(index + 1)}}:</span>
+						[SPAN_WHITE("Engine #{{:(index + 1)}}:")]
 					</div>
 					<div class="itemContent">
 						{{:helper.link(value.eng_on ? 'Shutdown' : 'Power up', 'power', { 'toggle' : 1, 'engine' : value.eng_reference }, null, value.eng_on ? value.eng_on == 1 ? 'linkOn' : 'yellowButton' : null)}}
@@ -94,14 +94,14 @@
 				</div>
 				<div class='item'>
 					<div class="itemLabel">
-						<span class='average'>Thrust:</span>
+						[SPAN_AVERAGE("Thrust:")]
 						<br>
-						<span class='average'>Thrust limit:</span>
+						[SPAN_AVERAGE("Thrust limit:")]
 					</div>
 					<div class="itemContent">
-						<span class='white'>{{:value.eng_thrust}}</span>
+						[SPAN_WHITE("{{:value.eng_thrust}}")]
 						<br>
-						<span class='white'>{{:value.eng_thrust_limiter}}%</span>
+						[SPAN_WHITE("{{:value.eng_thrust_limiter}}%")]
 					</div>
 				</div>
 			</div>

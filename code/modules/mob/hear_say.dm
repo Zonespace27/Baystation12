@@ -241,7 +241,7 @@
 						nverb = verb
 		formatted = language.format_message_radio(message, nverb)
 	else
-		formatted = "[verb], <span class=\"body\">\"[message]\"</span>"
+		formatted = "[verb], [SPAN_BODY("\"[message]\"")]"
 	if(sdisabilities & DEAFENED || ear_deaf)
 		var/mob/living/carbon/human/H = src
 		if(istype(H) && H.has_headset_in_ears() && prob(20))
@@ -250,7 +250,7 @@
 		on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 
 /proc/say_timestamp()
-	return "<span class='say_quote'>\[[stationtime2text()]\]</span>"
+	return SPAN_SAY_QUOTE("\[[stationtime2text()]\]")
 
 /mob/proc/on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 	to_chat(src, "[part_a][speaker_name][part_b][formatted][part_c]")

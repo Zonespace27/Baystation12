@@ -152,7 +152,7 @@ var/global/list/organ_cache = list()
 
 /obj/item/organ/proc/show_decay_status(mob/user)
 	if(status & ORGAN_DEAD)
-		to_chat(user, "<span class='notice'>The decay has set into \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("The decay has set into \the [src]."))
 
 /obj/item/organ/proc/handle_germ_effects()
 	//** Handle the effects of infections
@@ -305,7 +305,7 @@ var/global/list/organ_cache = list()
 		return ..()
 
 	if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
-		to_chat(user, "<span class='notice'>You successfully repress your cannibalistic tendencies.</span>")
+		to_chat(user, SPAN_NOTICE("You successfully repress your cannibalistic tendencies."))
 		return
 	if(!user.unEquip(src))
 		return
@@ -331,22 +331,22 @@ var/global/list/organ_cache = list()
 /obj/item/organ/proc/get_scan_results(var/tag = FALSE)
 	. = list()
 	if(BP_IS_CRYSTAL(src))
-		. += tag ? "<span class='average'>Crystalline</span>" : "Crystalline"
+		. += tag ? SPAN_AVERAGE("Crystalline") : "Crystalline"
 	else if(BP_IS_ASSISTED(src))
-		. += tag ? "<span class='average'>Assisted</span>" : "Assisted"
+		. += tag ? SPAN_AVERAGE("Assisted") : "Assisted"
 	else if(BP_IS_ROBOTIC(src))
-		. += tag ? "<span class='average'>Mechanical</span>" : "Mechanical"
+		. += tag ? SPAN_AVERAGE("Mechanical") : "Mechanical"
 	if(status & ORGAN_CUT_AWAY)
-		. += tag ? "<span class='bad'>Severed</span>" : "Severed"
+		. += tag ? SPAN_BAD("Severed") : "Severed"
 	if(status & ORGAN_MUTATED)
-		. += tag ? "<span class='bad'>Genetic Deformation</span>" : "Genetic Deformation"
+		. += tag ? SPAN_BAD("Genetic Deformation") : "Genetic Deformation"
 	if(status & ORGAN_DEAD)
 		if(can_recover())
-			. += tag ? "<span class='bad'>Decaying</span>" : "Decaying"
+			. += tag ? SPAN_BAD("Decaying") : "Decaying"
 		else
 			. += tag ? "<span style='color:#999999'>Necrotic</span>" : "Necrotic"
 	if(BP_IS_BRITTLE(src))
-		. += tag ? "<span class='bad'>Brittle</span>" : "Brittle"
+		. += tag ? SPAN_BAD("Brittle") : "Brittle"
 
 	switch (germ_level)
 		if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + ((INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3))
@@ -357,27 +357,27 @@ var/global/list/organ_cache = list()
 			. +=  "Mild Infection++"
 		if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3))
 			if(tag)
-				. += "<span class='average'>Acute Infection</span>"
+				. += SPAN_AVERAGE("Acute Infection")
 			else
 				. +=  "Acute Infection"
 		if (INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3) to INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3))
 			if(tag)
-				. += "<span class='average'>Acute Infection+</span>"
+				. += SPAN_AVERAGE("Acute Infection+")
 			else
 				. +=  "Acute Infection+"
 		if (INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3) to INFECTION_LEVEL_THREE)
 			if(tag)
-				. += "<span class='average'>Acute Infection++</span>"
+				. += SPAN_AVERAGE("Acute Infection++")
 			else
 				. +=  "Acute Infection++"
 		if (INFECTION_LEVEL_THREE to INFINITY)
 			if(tag)
-				. += "<span class='bad'>Septic</span>"
+				. += SPAN_BAD("Septic")
 			else
 				. +=  "Septic"
 	if(rejecting)
 		if(tag)
-			. += "<span class='bad'>Genetic Rejection</span>"
+			. += SPAN_BAD("Genetic Rejection")
 		else
 			. += "Genetic Rejection"
 

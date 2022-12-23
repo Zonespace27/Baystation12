@@ -159,7 +159,7 @@ var/global/list/channel_to_radio_key = new
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", whispering)
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
+			to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
 			return
 
 	if(stat)
@@ -198,7 +198,7 @@ var/global/list/channel_to_radio_key = new
 		return 1
 
 	if((is_muzzled()) && !(speaking && (speaking.flags & SIGNLANG)))
-		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
+		to_chat(src, SPAN_DANGER("You're muzzled and cannot speak!"))
 		return
 
 	if (speaking)

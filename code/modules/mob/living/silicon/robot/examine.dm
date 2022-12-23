@@ -17,18 +17,18 @@
 	msg += "</span>"
 
 	if(opened)
-		msg += "<span class='warning'>Its cover is open and the power cell is [cell ? "installed" : "missing"].</span>\n"
+		msg += "[SPAN_WARNING("Its cover is open and the power cell is [cell ? "installed" : "missing"].")]\n"
 	else
 		msg += "Its cover is closed.\n"
 
 	if(!has_power)
-		msg += "<span class='warning'>It appears to be running on backup power.</span>\n"
+		msg += "[SPAN_WARNING("It appears to be running on backup power.")]\n"
 
 	switch(src.stat)
 		if(CONSCIOUS)
 			if(!src.client)	msg += "It appears to be in stand-by mode.\n" //afk
-		if(UNCONSCIOUS)		msg += "<span class='warning'>It doesn't seem to be responding.</span>\n"
-		if(DEAD)			msg += "<span class='deadsay'>It looks completely unsalvageable.</span>\n"
+		if(UNCONSCIOUS)		msg += "[SPAN_WARNING("It doesn't seem to be responding.")]\n"
+		if(DEAD)			msg += "[SPAN_DEADSAY("It looks completely unsalvageable.")]\n"
 	msg += "*---------*"
 
 	if(print_flavor_text()) msg += "\n[print_flavor_text()]\n"

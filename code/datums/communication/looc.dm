@@ -10,10 +10,10 @@
 		return
 	var/mob/M = C.mob ? C.mob.get_looc_mob() : null
 	if(!M)
-		to_chat(C, "<span class='danger'>You cannot use [name] without a mob.</span>")
+		to_chat(C, SPAN_DANGER("You cannot use [name] without a mob."))
 		return FALSE
 	if(!get_turf(M))
-		to_chat(C, "<span class='danger'>You cannot use [name] while in nullspace.</span>")
+		to_chat(C, SPAN_DANGER("You cannot use [name] while in nullspace."))
 		return FALSE
 
 /decl/communication_channel/ooc/looc/do_communicate(var/client/C, var/message)
@@ -43,7 +43,7 @@
 	var/admin_stuff = holder ? "/([commkey])" : ""
 	if(prefix)
 		prefix = "\[[prefix]\] "
-	return "<span class='ooc'><span class='looc'>" + create_text_tag("looc", "LOOC:", src) + " <span class='prefix'>[prefix]</span><EM>[display_name][admin_stuff]:</EM> <span class='message'>[message]</span></span></span>"
+	return SPAN_OOC("[SPAN_LOOC("" + create_text_tag("looc", "LOOC:", src) + " <span class='prefix'>[prefix]")]<EM>[display_name][admin_stuff]:</EM> [SPAN_MESSAGE("[message]")]</span>")
 
 /mob/proc/looc_prefix()
 	return eyeobj ? "Body" : ""
@@ -58,4 +58,3 @@
 	if(!eyeobj)
 		return src
 	return eyeobj
-

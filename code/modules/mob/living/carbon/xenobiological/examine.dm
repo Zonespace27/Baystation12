@@ -2,7 +2,7 @@
 	. = ..()
 	var/msg = ""
 	if (src.stat == DEAD)
-		msg += "<span class='deadsay'>It is limp and unresponsive.</span>\n"
+		msg += "[SPAN_DEADSAY("It is limp and unresponsive.")]\n"
 	else
 		if (src.getBruteLoss())
 			msg += "<span class='warning'>"
@@ -21,10 +21,10 @@
 				msg += "It is glowing gently with moderate levels of electrical activity.\n"
 
 			if(6 to 9)
-				msg += "<span class='warning'>It is glowing brightly with high levels of electrical activity.</span>\n"
+				msg += "[SPAN_WARNING("It is glowing brightly with high levels of electrical activity.")]\n"
 
 			if(10)
-				msg += "<span class='warning'><B>It is radiating with massive levels of electrical activity!</B></span>\n"
+				msg += "[SPAN_WARNING("<B>It is radiating with massive levels of electrical activity!</B>")]\n"
 
 	msg += "*---------*"
 	to_chat(user, msg)

@@ -18,8 +18,8 @@
 	if (!message)
 		return
 
-	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker.name]</span>"
-	var/message_body = "<span class='message'>[speaker.say_quote(message)], \"[message]\"</span></span></i>"
+	var/message_start = "<i><span class='game say'>[name], [SPAN_NAME("[speaker.name]")]"
+	var/message_body = "[SPAN_MESSAGE("[speaker.say_quote(message)], \"[message]\"")]</span></i>"
 
 	for (var/mob/observer/ghost/O in GLOB.ghost_mob_list)
 		O.show_message("[message_start] ([ghost_follow_link(speaker, O)]) [message_body]", 2)
@@ -32,7 +32,7 @@
 		if(drone_only && !istype(S,/mob/living/silicon/robot/drone))
 			continue
 		else if(istype(S , /mob/living/silicon/ai))
-			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[S];track2=\ref[S];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a></span></i>"
+			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[S];track2=\ref[S];track=\ref[speaker];trackname=[html_encode(speaker.name)]'>[SPAN_NAME("[speaker.name]")]</a></span></i>"
 		else if (!S.binarycheck())
 			continue
 
@@ -44,7 +44,7 @@
 	for (var/mob/living/M in listening)
 		if(istype(M, /mob/living/silicon) || M.binarycheck())
 			continue
-		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
+		M.show_message("<i><span class='game say'>[SPAN_NAME("synthesised voice")] [SPAN_MESSAGE("beeps, \"beep beep beep\"")]</span></i>",2)
 
 	//robot binary xmitter component power usage
 	if (isrobot(speaker))
@@ -84,4 +84,3 @@
 	if(prob(70))
 		return "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	return pick(GLOB.ai_names)
-

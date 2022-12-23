@@ -83,7 +83,7 @@
 		owned_field.ChangeFieldStrength(value)
 
 /obj/machinery/power/fusion_core/physical_attack_hand(var/mob/user)
-	visible_message("<span class='notice'>\The [user] hugs \the [src] to make it feel better!</span>")
+	visible_message(SPAN_NOTICE("\The [user] hugs \the [src] to make it feel better!"))
 	if(owned_field)
 		Shutdown()
 	return TRUE
@@ -91,14 +91,14 @@
 /obj/machinery/power/fusion_core/attackby(var/obj/item/W, var/mob/user)
 
 	if(owned_field)
-		to_chat(user,"<span class='warning'>Shut \the [src] off first!</span>")
+		to_chat(user,SPAN_WARNING("Shut \the [src] off first!"))
 		return
 
 	if(isMultitool(W))
 		var/datum/extension/local_network_member/fusion = get_extension(src, /datum/extension/local_network_member)
 		fusion.get_new_tag(user)
 		return
-	
+
 	else if(isWrench(W))
 		anchored = !anchored
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)

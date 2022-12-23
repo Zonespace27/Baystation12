@@ -13,7 +13,7 @@
 	{{:helper.link(data.on ? 'Switch off' : 'Switch on', 'gear', { 'toggle' : 1 }, data.status != 'MISSING' ? null : 'disabled', data.on ? 'selected' : null)}}
 	<div class='item'>
 		<div class="itemLabel">
-			<span class='white'>Status:</span>
+			[SPAN_WHITE("Status:")]
 		</div>
 		<div class="itemContent">
 			{{:data.status}}
@@ -21,7 +21,7 @@
 	</div>
 	<div class='item'>
 		<div class="itemLabel">
-			<span class='white'>Range:</span>
+			[SPAN_WHITE("Range:")]
 		</div>
 		<div class="itemContent">
 			{{:helper.link(data.range, null, { 'range' : 1 }, null, null)}}
@@ -73,7 +73,7 @@
 <div class='item'>
 	<div class="itemContent">
 		<div class='item'>
-			<span class='white'>Sector map view</span>
+			[SPAN_WHITE("Sector map view")]
 			{{:helper.link(data.viewing ? 'Engaged' : 'Disengaged', 'shuffle', { 'viewing' : 1 }, null, data.viewing ? 'selected' : null)}}
 		</div>
 	</div>
@@ -86,7 +86,7 @@
 	<tr>
 	<div class='item'>
 		<td>{{:helper.link('Scan', 'search' ,{ 'scan' : value.ref }, null, null)}}</td>
-		<td><span class='white'>{{:value.name}}</span>, bearing {{:value.bearing}}</td>
+		<td>[SPAN_WHITE("{{:value.name}}")], bearing {{:value.bearing}}</td>
 	</div>
 	</tr>
 	{{/for}}

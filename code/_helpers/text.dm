@@ -409,7 +409,7 @@
 	t = replacetext(t, "\[date\]", "[stationdate2text()]")
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
-	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+	t = replacetext(t, "\[field\]", SPAN_PAPER_FIELD(""))
 	t = replacetext(t, "\[h1\]", "<H1>")
 	t = replacetext(t, "\[/h1\]", "</H1>")
 	t = replacetext(t, "\[h2\]", "<H2>")
@@ -451,7 +451,7 @@
 	text = replacetext(text, "\[fontblue\]", "<font color=\"blue\">")//</font> to pass html tag integrity unit test
 	text = replacetext(text, "\[fontgreen\]", "<font color=\"green\">")
 	text = replacetext(text, "\[/font\]", "</font>")
-	text = replacetext(text, "\[redacted\]", "<span class=\"redacted\">R E D A C T E D</span>")
+	text = replacetext(text, "\[redacted\]", SPAN_REDACTED("R E D A C T E D"))
 	return pencode2html(text)
 
 //Will kill most formatting; not recommended.
@@ -495,8 +495,8 @@
 	t = replacetext(t, "<img src = daislogo.png>", "\[daislogo\]")
 	t = replacetext(t, "<img src = xynlogo.png>", "\[xynlogo\]")
 	t = replacetext(t, "<img src = sfplogo.png>", "\[sfplogo\]")
-	t = replacetext(t, "<span class=\"paper_field\"></span>", "\[field\]")
-	t = replacetext(t, "<span class=\"redacted\">R E D A C T E D</span>", "\[redacted\]")
+	t = replacetext(t, SPAN_PAPER_FIELD(""), "\[field\]")
+	t = replacetext(t, SPAN_REDACTED("R E D A C T E D"), "\[redacted\]")
 	t = strip_html_properly(t)
 	return t
 

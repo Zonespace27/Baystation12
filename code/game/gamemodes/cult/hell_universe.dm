@@ -17,7 +17,7 @@ In short:
 	return 1
 	/*
 	if(user)
-		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
+		to_chat(user, SPAN_SINISTER("All you hear on the frequency is static and panicked screaming. There will be no shuttle call today."))
 	return 0
 	*/
 
@@ -35,7 +35,7 @@ In short:
 	SSskybox.change_skybox("dyable", new_use_stars = TRUE, new_use_overmap_details = TRUE)
 	for (var/mob/living/simple_animal/S in GLOB.living_mob_list_)
 		if (S.faction == "cult")
-			to_chat(S, SPAN_OCCULT("You hear a terrible scream from a place beyond reality, as a life's sacrifice banishes your master. The dark power animating your form wavers, and withdraws, leaving it an unliving shell of meat. Your mind puffs away, like mist under a hot sun."))
+			to_chat(S, SPAN_CULT("You hear a terrible scream from a place beyond reality, as a life's sacrifice banishes your master. The dark power animating your form wavers, and withdraws, leaving it an unliving shell of meat. Your mind puffs away, like mist under a hot sun."))
 			S.set_stat(DEAD)
 	for (var/turf/simulated/wall/cult/wall)
 		wall.decultify_wall()

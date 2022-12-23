@@ -30,13 +30,13 @@
 
 /obj/item/psychic_power/attack(var/mob/living/M, var/mob/living/user, var/target_zone)
 	if(M.do_psionics_check(max(force, maintain_cost), user))
-		to_chat(user, "<span class='danger'>\The [src] flickers violently out of phase!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] flickers violently out of phase!"))
 		return 1
 	. = ..()
 
 /obj/item/psychic_power/afterattack(var/atom/target, var/mob/living/user, var/proximity)
 	if(target.do_psionics_check(max(force, maintain_cost), user))
-		to_chat(user, "<span class='danger'>\The [src] flickers violently out of phase!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] flickers violently out of phase!"))
 		return
 	. = ..(target, user, proximity)
 

@@ -84,10 +84,10 @@
 		var/obj/item/stock_parts/computer/hard_drive/hard_drive = get_component(PART_HDD)
 		if(hard_drive)
 			if(prob(10))
-				hard_drive.visible_message("<span class='warning'>[src] emits some ominous clicks.</span>")
+				hard_drive.visible_message(SPAN_WARNING("[src] emits some ominous clicks."))
 				hard_drive.take_damage(hard_drive.damage_malfunction)
 			else if(prob(5))
-				hard_drive.visible_message("<span class='warning'>[src] emits some ominous clicks.</span>")
+				hard_drive.visible_message(SPAN_WARNING("[src] emits some ominous clicks."))
 				hard_drive.take_damage(hard_drive.damage_failure)
 	update_host_icon()
 

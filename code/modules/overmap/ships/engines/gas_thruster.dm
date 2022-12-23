@@ -69,7 +69,7 @@
 	use_power = POWER_USE_OFF
 	power_channel = EQUIP
 	idle_power_usage = 21600 //6 Wh per tick for default 2 capacitor. Gives them a reason to turn it off, really to nerf backup battery
-	
+
 	machine_name = "gas thruster"
 	machine_desc = "A heavy-duty spaceship thruster that throws gas out of its nozzle to allow propulsion."
 
@@ -111,13 +111,13 @@
 	. = list()
 	.+= "Location: [get_area(src)]."
 	if(stat & NOPOWER)
-		.+= "<span class='average'>Insufficient power to operate.</span>"
+		.+= SPAN_AVERAGE("Insufficient power to operate.")
 	if(!check_fuel())
-		.+= "<span class='average'>Insufficient fuel for a burn.</span>"
+		.+= SPAN_AVERAGE("Insufficient fuel for a burn.")
 	if(stat & BROKEN)
-		.+= "<span class='average'>Inoperable engine configuration.</span>"
+		.+= SPAN_AVERAGE("Inoperable engine configuration.")
 	if(blockage)
-		.+= "<span class='average'>Obstruction of airflow detected.</span>"
+		.+= SPAN_AVERAGE("Obstruction of airflow detected.")
 
 	.+= "Propellant total mass: [round(air_contents.get_mass(),0.01)] kg."
 	.+= "Propellant used per burn: [round(air_contents.specific_mass() * moles_per_burn * thrust_limit,0.01)] kg."
@@ -163,7 +163,7 @@
 	if(!is_on())
 		return 0
 	if(!check_fuel() || (0 < use_power_oneoff(charge_per_burn)) || check_blockage())
-		audible_message(src,"<span class='warning'>[src] coughs once and goes silent!</span>")
+		audible_message(src,SPAN_WARNING("[src] coughs once and goes silent!"))
 		update_use_power(POWER_USE_OFF)
 		return 0
 

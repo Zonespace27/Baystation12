@@ -1,6 +1,3 @@
-#define SPAN_AOOC(X) "<span class='ooc'><span class='aooc'>[create_text_tag("aooc", "Antag-OOC:", target)] [X]</span></span>"
-
-
 /decl/communication_channel/aooc
 	name = "AOOC"
 	config_setting = "aooc_allowed"

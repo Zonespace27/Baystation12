@@ -1,6 +1,6 @@
 {{if data.focus}}
 	<div class="notice" style="height: 22px">
-		{{:helper.link('Show List', 'cancel', { 'clear' : 1})}}   Sensor selected: {{:data.focus.name}} 
+		{{:helper.link('Show List', 'cancel', { 'clear' : 1})}}   Sensor selected: {{:data.focus.name}}
 	</div>
 	{{if data.focus.error}}
 		{{:data.focus.error}}
@@ -10,19 +10,19 @@
 			Network Load Status:
 		</div>
 		{{if data.focus.load_percentage >= 95}}
-			<div class="itemContent"><span class='bad'>DANGER: Overload</span></div>
+			<div class="itemContent">[SPAN_BAD("DANGER: Overload")]</div>
 		{{else data.focus.load_percentage >= 85}}
-			<div class="itemContent"><span class='average'>WARNING: High Load</span></div>
+			<div class="itemContent">[SPAN_AVERAGE("WARNING: High Load")]</div>
 		{{else}}
-			<div class="itemContent"><span class='good'>Optimal</span></div>
+			<div class="itemContent">[SPAN_GOOD("Optimal")]</div>
 		{{/if}}
 		<div class="itemLabel">
 			Network Security Status:
 		</div>
 		{{if data.focus.alarm}}
-			<div class="itemContent"><span class='bad'>WARNING: Abnormal activity detected!</span></div>
+			<div class="itemContent">[SPAN_BAD("WARNING: Abnormal activity detected!")]</div>
 		{{else}}
-			<div class="itemContent"><span class='good'>Secure</span></div>
+			<div class="itemContent">[SPAN_GOOD("Secure")]</div>
 		{{/if}}
 
 		<div class="itemLabel">
@@ -90,4 +90,4 @@
 		<b>WARN: No Sensors Detected!</b>
 	{{/for}}
 	</table>
-{{/if}} 
+{{/if}}

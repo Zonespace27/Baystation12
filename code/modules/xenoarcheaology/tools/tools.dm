@@ -9,11 +9,11 @@
 	w_class = ITEM_SIZE_SMALL
 
 /obj/item/device/gps/attack_self(var/mob/user as mob)
-	to_chat(user, "<span class='notice'>[icon2html(src, user)] \The [src] flashes <i>[get_coordinates()]</i>.</span>")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] \The [src] flashes <i>[get_coordinates()]</i>."))
 
 /obj/item/device/gps/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>\The [src]'s screen shows: <i>[get_coordinates()]</i>.</span>")
+	to_chat(user, SPAN_NOTICE("\The [src]'s screen shows: <i>[get_coordinates()]</i>."))
 
 /obj/item/device/gps/proc/get_coordinates()
 	var/turf/T = get_turf(src)
@@ -143,7 +143,7 @@
 	var/material = "unknown"
 
 /obj/item/device/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
-	user.visible_message("<span class='notice'>\The [user] scans \the [A], the air around them humming gently.</span>")
+	user.visible_message(SPAN_NOTICE("\The [user] scans \the [A], the air around them humming gently."))
 
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
@@ -165,7 +165,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(src, user)] [src] pings.</span>")
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] [src] pings."))
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -183,7 +183,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(src, user)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] [src] pings [pick("madly","wildly","excitedly","crazily")]!"))
 
 	updateSelfDialog()
 

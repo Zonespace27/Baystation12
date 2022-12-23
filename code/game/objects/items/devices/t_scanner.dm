@@ -40,7 +40,7 @@
 /obj/item/device/t_scanner/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	var/obj/structure/disposalpipe/D = target
 	if(D && istype(D))
-		to_chat(user, "<span class='info'>Pipe segment integrity: [100 - D.get_damage_percentage()]%</span>")
+		to_chat(user, SPAN_INFO("Pipe segment integrity: [100 - D.get_damage_percentage()]%"))
 
 /obj/item/device/t_scanner/proc/set_active(var/active)
 	on = active

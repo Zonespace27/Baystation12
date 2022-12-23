@@ -41,7 +41,7 @@
 			<div class="itemContent">
 				{{:helper.link('Eject Container and Clear Buffer', null, {"eject": 1})}}
 			</div>
-		</div> 
+		</div>
 		<div class="item"> <!-- Button for showing/ejecting pill bottle -->
 			<div class="itemContent">
 				{{if data.loadedPillBottle}}
@@ -137,9 +137,9 @@
 					<td>{{:helper.link("Create condiment bottle (max. 50u)", null, {"createbottle" : 1})}}
 				</table>
 			</div>
-			
+
 		{{/if}}
 	{{else}}
-		<span class='average'><i>No container inserted.</i></span>
+		[SPAN_AVERAGE("<i>No container inserted.</i>")]
 	{{/if}}
 {{/if}}

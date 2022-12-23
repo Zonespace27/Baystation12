@@ -3,7 +3,7 @@
 
 /decl/teleport/proc/teleport(var/atom/target, var/atom/destination, var/precision = 0)
 	if(!can_teleport(target,destination))
-		target.visible_message("<span class='warning'>\The [target] bounces off the teleporter!</span>")
+		target.visible_message(SPAN_WARNING("\The [target] bounces off the teleporter!"))
 		return
 
 	teleport_target(target, destination, precision)

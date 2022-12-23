@@ -168,14 +168,14 @@ var/global/list/organ_rel_size = list(
 		for(var/obj/item/grab/G in target.grabbed_by)
 			if(G.stop_move())
 				return zone
-				
+
 	var/miss_chance = 10
 	if (zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
 	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
 		return null
-	else 
+	else
 		if (prob(miss_chance))
 			return (ran_zone())
 		else
@@ -389,7 +389,7 @@ var/global/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 	var/turf/sourceturf = get_turf(broadcast_source)
 	for(var/mob/M in targets)
 		if(!sourceturf || (get_z(M) in GetConnectedZlevels(sourceturf.z)))
-			M.show_message("<span class='info'>[icon2html(icon, M)] [message]</span>", 1)
+			M.show_message(SPAN_INFO("[icon2html(icon, M)] [message]"), 1)
 
 /proc/mobs_in_area(var/area/A)
 	var/list/mobs = new
@@ -432,9 +432,9 @@ var/global/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 		if(C.mob.lastarea)
 			diedat = " at [C.mob.lastarea]"
 		if(joined_ghosts)
-			message = "The ghost of <span class='name'>[name]</span> now [pick("skulks","lurks","prowls","creeps","stalks")] among the dead[diedat]. [message]"
+			message = "The ghost of [SPAN_NAME("[name]")] now [pick("skulks","lurks","prowls","creeps","stalks")] among the dead[diedat]. [message]"
 		else
-			message = "<span class='name'>[name]</span> no longer [pick("skulks","lurks","prowls","creeps","stalks")] in the realm of the dead. [message]"
+			message = "[SPAN_NAME("[name]")] no longer [pick("skulks","lurks","prowls","creeps","stalks")] in the realm of the dead. [message]"
 		communicate(/decl/communication_channel/dsay, C || O, message, /decl/dsay_communication/direct)
 
 /mob/proc/switch_to_camera(var/obj/machinery/camera/C)
@@ -598,11 +598,11 @@ var/global/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 	if(src.jitteriness >= 400 && prob(5)) //Kills people if they have high jitters.
 		if(prob(1))
 			L.take_internal_damage(L.max_damage / 2, 0)
-			to_chat(src, "<span class='danger'>Something explodes in your heart.</span>")
+			to_chat(src, SPAN_DANGER("Something explodes in your heart."))
 			admin_victim_log(src, "has taken <b>lethal heart damage</b> at jitteriness level [src.jitteriness].")
 		else
 			L.take_internal_damage(1, 0)
-			to_chat(src, "<span class='danger'>The jitters are killing you! You feel your heart beating out of your chest.</span>")
+			to_chat(src, SPAN_DANGER("The jitters are killing you! You feel your heart beating out of your chest."))
 			admin_victim_log(src, "has taken <i>minor heart damage</i> at jitteriness level [src.jitteriness].")
 	return 1
 

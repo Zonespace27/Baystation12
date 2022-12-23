@@ -2,27 +2,27 @@
 <div class="block">
 		<h3>Status</h3>
 		<div class="item">
-				<span class='average'>{{:data.active ? "Enabled" : "Disabled"}}</span>
+				[SPAN_AVERAGE("{{:data.active ? "Enabled" : "Disabled"}}")]
 		</div>
 		<div class="item">
 			{{:helper.link('Enable' , null, {'enable_jammer' : 1}, data.active ? "selected" : null, null)}}
 			{{:helper.link('Disable' , null, {'disable_jammer' : 1}, data.active ? null : "selected", null)}}
 		</div>
 	</div>
-	
+
 	<div class="block">
 		<h3>Range</h3>
-		
+
 		<div class="item">
-				<span class='average'>{{:data.range}}</span> meter(s)
+				[SPAN_AVERAGE("{{:data.range}}")] meter(s)
 		</div>
-	
+
 		<div class="item">
 			{{:helper.link('Decrease' , 'minusthick', {'decrease_range' : 1}, data.range <= 0 ? "disabled" : null, null)}}
 			{{:helper.link('Increase' , 'plusthick', {'increase_range' : 1}, data.active >= data.max_range ? "disabled" : null, null)}}
 		</div>
 	</div>
-	
+
 	<div class="block">
 	<table>
 		<tr><th>Mode</th><th>Cost</th></tr>
@@ -31,7 +31,7 @@
 		{{/for}}
 	</table>
 	</div>
-	
+
 	<div class="block">
 	<div class="item">
 		<div class="itemLabel">

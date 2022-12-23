@@ -31,7 +31,7 @@
 				if(prob(75))
 					to_chat(H, "<b><span class='info' size='[num2text(rand(1,5))]'>[pick(drastic_messages)]</b></span>")
 				else
-					to_chat(H, "<span class='info'>[pick(messages)]</span>")
+					to_chat(H, SPAN_INFO("[pick(messages)]"))
 
 			if(prob(50))
 				H.dizziness += rand(3,5)
@@ -42,7 +42,7 @@
 		for (var/mob/living/carbon/human/H in range(src.effectrange,T))
 			if(prob(5))
 				if(prob(75))
-					to_chat(H, "<span class='info'>[pick(messages)]</span>")
+					to_chat(H, SPAN_INFO("[pick(messages)]"))
 				else
 					to_chat(H, "<span class='info' size='[num2text(rand(1,5))]'><b>[pick(drastic_messages)]</b></span>")
 
@@ -58,7 +58,7 @@
 				if(prob(95))
 					to_chat(H, "<span class='info' size='[num2text(rand(1,5))]'><b>[pick(drastic_messages)]</b></span>")
 				else
-					to_chat(H, "<span class='info'>[pick(messages)]</span>")
+					to_chat(H, SPAN_INFO("[pick(messages)]"))
 
 			H.dizziness += rand(5,15)
 		return 1

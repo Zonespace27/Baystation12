@@ -11,7 +11,7 @@ var/global/list/stored_shock_by_ref = list()
 /datum/species/proc/toggle_stance(var/mob/living/carbon/human/H)
 	if(!H.incapacitated())
 		H.pulling_punches = !H.pulling_punches
-		to_chat(H, "<span class='notice'>You are now [H.pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
+		to_chat(H, SPAN_NOTICE("You are now [H.pulling_punches ? "pulling your punches" : "not pulling your punches"]."))
 
 /datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
 
@@ -44,7 +44,7 @@ var/global/list/stored_shock_by_ref = list()
 		if(H.getHalLoss())
 			H.adjustHalLoss(-(water_soothe_amount))
 			if(prob(5))
-				to_chat(H, "<span class='notice'>The water ripples gently over your skin in a soothing balm.</span>")
+				to_chat(H, SPAN_NOTICE("The water ripples gently over your skin in a soothing balm."))
 
 /datum/species/proc/is_available_for_join()
 	if(!(spawn_flags & SPECIES_CAN_JOIN))

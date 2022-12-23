@@ -13,7 +13,7 @@
 	<div class='item'>
 		<div class="itemContent">
 			<div class='item'>
-				<span class='white'>Map view</span>
+				[SPAN_WHITE("Map view")]
 				{{:helper.link(data.viewing ? 'Engaged' : 'Disengaged', 'shuffle', { 'viewing' : 1 }, null, data.viewing ? 'selected' : null)}}
 			</div>
 		</div>
@@ -24,9 +24,9 @@
 	<div class='block'>
 		{{:data.sector}}
 		<br>
-		<span class='average'>Coordinates:</span> {{:data.s_x}} : {{:data.s_y}}
+		[SPAN_AVERAGE("Coordinates:")] {{:data.s_x}} : {{:data.s_y}}
 		<br>
-		<span class='average'>Additional information:</span> {{:data.sector_info}}
+		[SPAN_AVERAGE("Additional information:")] {{:data.sector_info}}
 	</div>
 </div>
 
@@ -35,7 +35,7 @@
 	<div class='block'>
 		<div class='item'>
 			<div class="itemLabel">
-				<span class='average'>ETA to next grid:</span>
+				[SPAN_AVERAGE("ETA to next grid:")]
 			</div>
 			<div style="float:right">
 				{{:data.ETAnext}}
@@ -43,7 +43,7 @@
 		</div>
 		<div class='item'>
 			<div class="itemLabel">
-				<span class='average'>Speed:</span>
+				[SPAN_AVERAGE("Speed:")]
 			</div>
 			<div style="float:right">
 				{{:data.speed}} Gm/h
@@ -51,7 +51,7 @@
 		</div>
 		<div class='item'>
 			<div class="itemLabel">
-				<span class='average'>Acceleration:</span>
+				[SPAN_AVERAGE("Acceleration:")]
 			</div>
 			<div style="float:right">
 				{{:data.accel}} Gm/h
@@ -59,7 +59,7 @@
 		</div>
 		<div class='item'>
 			<div class="itemLabel">
-				<span class='average'>Heading:</span>
+				[SPAN_AVERAGE("Heading:")]
 			</div>
 			<div style="float:right">
 				{{:data.heading}}&deg;

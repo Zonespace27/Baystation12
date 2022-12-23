@@ -7,7 +7,7 @@
 	hidden_from_codex = 1
 
 /datum/language/noise/format_message(message, verb)
-	return "<span class='message'><span class='[colour]'>[message]</span></span>"
+	return SPAN_MESSAGE("<span class='[colour]'>[message]</span>")
 
 /datum/language/noise/format_message_plain(message, verb)
 	return message

@@ -112,7 +112,7 @@
 			if (sneaky)
 				brainmob.real_name = sneaky
 				brainmob.SetName(brainmob.real_name)
-				UpdateNames() 
+				UpdateNames()
 		else
 			to_chat(brainmob, SPAN_NOTICE("You're safe! Your brain didn't manage to replace you. This time."))
 	else
@@ -224,7 +224,7 @@
 
 	update_icon()
 
-	to_chat(brainmob, "<span class='notice'>You feel slightly disoriented. That's normal when you're just \a [initial(src.name)].</span>")
+	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just \a [initial(src.name)]."))
 	callHook("debrain", list(brainmob))
 
 /obj/item/organ/internal/posibrain/Process()
@@ -330,4 +330,3 @@
 
 
 	brainmob.open_subsystem(/datum/nano_module/law_manager, usr)
-	

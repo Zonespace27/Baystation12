@@ -25,7 +25,7 @@
 	var/mob/living/L = .
 	if(istype(L))
 		if(prob(25))//if one is unlucky enough, they get tackled few tiles away
-			L.visible_message("<span class='danger'>\The [src] tackles [L]!</span>")
+			L.visible_message(SPAN_DANGER("\The [src] tackles [L]!"))
 			var/tackle_length = rand(3,5)
 			for (var/i = 1 to tackle_length)
 				var/turf/T = get_step(L.loc, S.dir)//on a first step of tackling standing mob would block movement so let's check if there's something behind it. Works for consequent moves too
@@ -34,7 +34,7 @@
 				sleep(2)
 				S.forceMove(T)//maybe there's better manner then just forceMove() them
 				L.forceMove(T)
-			S.visible_message("<span class='danger'>\The [S] releases [L].</span>")
+			S.visible_message(SPAN_DANGER("\The [S] releases [L]."))
 
 
 /mob/living/simple_animal/hostile/carp/shark/carp_randomify()
@@ -52,4 +52,4 @@
 		var/datum/gas_mixture/sharkmaw_phoron = new
 		sharkmaw_phoron.adjust_gas(GAS_PHORON,  10)
 		environment.merge(sharkmaw_phoron)
-		visible_message("<span class='warning'>\The [src]'s body releases some gas from the gills with a quiet fizz!</span>")
+		visible_message(SPAN_WARNING("\The [src]'s body releases some gas from the gills with a quiet fizz!"))
